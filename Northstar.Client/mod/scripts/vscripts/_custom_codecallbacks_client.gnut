@@ -1,6 +1,7 @@
 untyped
 
 global function whisperCallback
+global function GetPlayerNameById
 
 int function GetIdByPlayerName(string name) {
     int arrayLen = GetPlayerArray().len()
@@ -13,14 +14,22 @@ int function GetIdByPlayerName(string name) {
     return found
 }
 
+void function GetPlayerNameById() {
+    int id = NSGetPlayerIdForLookup()
+    print("Looking up id")
+    print(id)
+    string name = GetPlayerArray()[id].GetPlayerName()
+    NSSetFoundPlayerName(name)
+}
+
 void function whisperCallback() {
     string receiver = NSGetWhisperReceiver()
     int id = GetIdByPlayerName(receiver)
     if (id == -1) {
         print("Could not find a player with the name " + receiver)
-        //return;
+        return;
     }
     string message = NSGetWhisperMessage()
-    GetLocalClientPlayer().ClientCommand("swhisper " + receiver + " " + message)
+    GetLocalClientPlayer().ClientCommand("swhisper " + id + " " + message)
 }
 

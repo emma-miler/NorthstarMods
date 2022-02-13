@@ -14,9 +14,10 @@ bool function Whisper(entity player, array<string> args) {
     if (id == 0 && args[0] != "0") {
         return true // incorrect argument
     }
-    NSSendMessage(player.GetPlayerIndex() + 128, player.GetPlayerIndex(), message, false, false, 2) // offset by 128 so normal clients do see it
+
+    NSSendMessage(player.GetPlayerIndex() + 128, id, message, false, false, 2)
     if (player.GetPlayerIndex() != id) {
-        NSSendMessage(player.GetPlayerIndex() + 128, id, message, false, false, 2)
+        NSSendMessage(player.GetPlayerIndex() + 128, player.GetPlayerIndex(), message, false, false, 2) // offset by 128 so normal clients do see it
     }
     return true
 }
