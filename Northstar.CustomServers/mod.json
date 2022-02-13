@@ -48,10 +48,6 @@
 	],
 	"Scripts": [
 		{
-			"Path": "_custom_codecallbacks.gnut",
-			"RunOn": "SERVER"
-		},
-		{
 			"Path": "_misc_stubs.gnut",
 			"RunOn": "SERVER && MP"
 		},

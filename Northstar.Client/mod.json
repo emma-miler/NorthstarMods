@@ -31,10 +31,6 @@
 	],
 	"Scripts": [
 		{
-			"Path": "_custom_codecallbacks_client.gnut",
-			"RunOn": "CLIENT"
-		},
-		{
 			"Path": "ui/menu_ns_modmenu.nut",
 			"RunOn": "UI",
 			"UICallback": {
