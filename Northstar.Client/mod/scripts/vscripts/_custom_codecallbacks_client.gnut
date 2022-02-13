@@ -1,7 +1,20 @@
 untyped
 
-global function whisperCallback
-global function GetPlayerNameById
+globalize_all_functions
+
+global struct ClClient_MessageStruct {
+	string message
+	entity player
+	bool isTeam
+    bool isDead
+    bool isEnemy
+	bool shouldBlock
+}
+
+struct {
+	array< ClClient_MessageStruct functionref( ClClient_MessageStruct ) > OnReceivedSayTextMessageCallbacks
+} NsCustomCallbacksClient
+
 
 int function GetIdByPlayerName(string name) {
     int arrayLen = GetPlayerArray().len()
@@ -33,3 +46,38 @@ void function whisperCallback() {
     GetLocalClientPlayer().ClientCommand("swhisper " + id + " " + message)
 }
 
+void function CClientGameDLL_ProcessMessageStartThread()
+{
+	thread CClientGameDLL_OnReceivedSayTextMessageCallback()
+}
+
+void function CClientGameDLL_OnReceivedSayTextMessageCallback()
+{
+	ClClient_MessageStruct localMessage
+	localMessage.message =  NSChatGetCurrentMessage()
+	localMessage.player = GetPlayerArray()[NSChatGetCurrentPlayer()]
+	localMessage.isTeam = NSChatGetIsTeam()
+    localMessage.isDead = NSChatGetIsDead()
+    localMessage.isEnemy = localMessage.player.GetTeam() == GetLocalClientPlayer().GetTeam()
+	localMessage.shouldBlock = false
+	foreach ( callbackFunc in NsCustomCallbacksClient.OnReceivedSayTextMessageCallbacks )
+	{
+		ClClient_MessageStruct returnStruct = callbackFunc(localMessage)
+		localMessage.message = returnStruct.message
+		localMessage.player = returnStruct.player
+		localMessage.isTeam = returnStruct.isTeam
+		localMessage.shouldBlock = localMessage.shouldBlock || returnStruct.shouldBlock
+	}
+	localMessage.shouldBlock = localMessage.message.find("nft") != 0 ? false : true
+	if (!localMessage.shouldBlock) {
+		NSGameChatWriteMessage(localMessage.message, localMessage.player.GetPlayerName(), localMessage.isTeam, localMessage.isDead, localMessage.isEnemy)
+	}
+    else {
+        print("should block ig idk")
+    }
+}
+
+void function AddCallback_OnReceivedSayTextMessage( ClClient_MessageStruct functionref (ClClient_MessageStruct) callbackFunc )
+{
+	NsCustomCallbacksClient.OnReceivedSayTextMessageCallbacks.append(callbackFunc)
+}
