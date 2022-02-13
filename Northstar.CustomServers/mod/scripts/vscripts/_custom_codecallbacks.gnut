@@ -1,0 +1,48 @@
+untyped
+
+globalize_all_functions
+
+global struct ClServer_MessageStruct {
+	string message
+	entity player
+	bool isTeam
+	bool shouldBlock
+}
+
+struct {
+	array< ClServer_MessageStruct functionref( ClServer_MessageStruct ) > OnReceivedSayTextMessageCallbacks
+} NsCustomCallbacks
+
+void function CServerGameDLL_ProcessMessageStartThread()
+{
+	thread CServerGameDLL_OnReceivedSayTextMessageCallback()
+}
+
+void function CServerGameDLL_OnReceivedSayTextMessageCallback()
+{
+	ClServer_MessageStruct localMessage
+	localMessage.message =  NSChatGetCurrentMessage()
+	localMessage.player = GetPlayerByIndex(NSChatGetCurrentPlayer())
+	localMessage.isTeam = NSChatGetIsTeam()
+	localMessage.shouldBlock = false
+	foreach ( callbackFunc in NsCustomCallbacks.OnReceivedSayTextMessageCallbacks )
+	{
+		ClServer_MessageStruct returnStruct = callbackFunc(localMessage)
+		localMessage.message = returnStruct.message
+		localMessage.player = returnStruct.player
+		localMessage.isTeam = returnStruct.isTeam
+		localMessage.shouldBlock = localMessage.shouldBlock || returnStruct.shouldBlock
+	}
+	localMessage.shouldBlock = localMessage.message.find("nft") != 0 ? false : true
+	if (!localMessage.shouldBlock) {
+		NSChatBroadcastText(localMessage.player.GetPlayerIndex(), localMessage.message, localMessage.isTeam)
+	}
+	else {
+		NSSendMessage(-1, localMessage.player.GetPlayerIndex(), "Hey, don't say that!", false, false, 2)
+	}
+}
+
+void function AddCallback_OnReceivedSayTextMessage( ClServer_MessageStruct functionref (ClServer_MessageStruct) callbackFunc )
+{
+	NsCustomCallbacks.OnReceivedSayTextMessageCallbacks.append(callbackFunc)
+}
