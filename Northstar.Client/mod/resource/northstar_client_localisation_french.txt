@@ -82,8 +82,6 @@ Choisissez Oui si vous êtes d'accord. Ce choix peut être modifié à tout inst
 		"cp_amped_capture_points" "Points de capture améliorés"
 		"coliseum_loadouts_enabled" "Equipements du Colisée"
 
-		"aitdm_archer_grunts" "Soldats (Archer)"
-
 		// northstar.custom localisation is just deciding not to work, so putting it here for now
 		"PL_sbox" "Bac à sable"
 		"PL_sbox_lobby" "Lobby: Bac à sable"
@@ -319,5 +317,24 @@ Choisissez Oui si vous êtes d'accord. Ce choix peut être modifié à tout inst
 		"INVALID_MASTERSERVER_TOKEN"     "Jeton du server maître invalide ou expiré"
 		"JSON_PARSE_ERROR"                 "Une erreur est survenue durant l'analyse JSON"
 		"UNSUPPORTED_VERSION"             "La version que vous utilisez n'est plus supportée"
+
+		// In-game chat
+		"HUD_CHAT_WHISPER_PREFIX" "[WHISPER]"
+		"HUD_CHAT_SERVER_PREFIX" "[SERVER]"
+
+		"NS_INVITE_MENU_HEADER"          		"Invitations"
+		"NS_INVITE_GENERATE_SERVER_BUTTON"   	"Inviter dans le serveur"
+		"NS_INVITE_GENERATE_PARTY_BUTTON"    	"Inviter dans le groupe"
+		"NS_INVITE_JOIN_BUTTON"              	"Rejoindre"
+		"NS_INVITE_JOIN_HEADER"           		"Rejoindre"
+		"NS_INVITE_JOIN_BODY"             		"Vous avez reçu une invitation à rejoindre le serveur suivant : \n%s1 \nVoulez-vous le rejoindre ?"
+		"NS_PARTY_INVITE_HEADER"          		"Rejoindre le groupe"
+		"NS_PARTY_INVITE_BODY"            		"%s1 vous a invité à rejoindre un groupe \nVoulez-vous le rejoindre ?"
+		"NS_INVITE_GENERATE_FAILURE_HEADER"     "La création de l'invitation a échoué"
+		"NS_INVITE_GENERATE_FAILURE_BODY"	    "Une erreur est survenue en essayant de créer une invitation: %s1"
+		"NS_INVITE_GENERATE_SUCCESS_HEADER"     "Invitation créé"
+		"NS_INVITE_GENERATE_SUCCESS_BODY"       "Invitation copiée dans le presse-papiers"
+		"NS_INVITE_JOIN_FAILURE_HEADER"  "L'invitation a échoué"
+		"NS_INVITE_JOIN_FAILURE_BODY"    "L'invitation n'a pas pu aboutir \n(erreur :%s1)."
 	}
 }
