@@ -340,5 +340,7 @@
 		"NS_INVITE_GENERATE_SUCCESS_BODY"      	"邀請鏈接已複製到粘貼板"
 		"NS_INVITE_JOIN_FAILURE_HEADER"  		"接受邀請失敗"
 		"NS_INVITE_JOIN_FAILURE_BODY"    		"無法接受邀請,錯誤:\n%s1"
+
+		"DONT_ASK_AGAIN"						"不再提示"
 	}
 }

@@ -290,5 +290,7 @@ Premi Sì se sei d'accordo. Questa scelta può essere modificata in qualsiasi mo
 		"NS_INVITE_GENERATE_SUCCESS_BODY"       "Il tuo Invito è stato copiato negli appunti"
 		"NS_INVITE_JOIN_FAILURE_HEADER"  "Accettazione Invito non riuscito"
 		"NS_INVITE_JOIN_FAILURE_BODY"    "Non è stato possibile accettare l'invito. Per favore controllare l'errore qui sotto:\n%s1"
+
+		"DONT_ASK_AGAIN"						"Non chiedere più"
 	}
 }

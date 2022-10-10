@@ -277,5 +277,7 @@
 		"NS_INVITE_GENERATE_SUCCESS_BODY"      	"招待状がクリップボードにコピーされました"
 		"NS_INVITE_JOIN_FAILURE_HEADER" 	   	"招待に参加できませんでした"
 		"NS_INVITE_JOIN_FAILURE_BODY"    	   	"招待に参加できませんでした。以下のエラーを参照してください ％s1"
+
+		"DONT_ASK_AGAIN"						"二度と聞かないでください"
 	}
 }

@@ -334,5 +334,8 @@ Press Yes if you agree to this. This choice can be changed in the mods menu at a
 		"NS_INVITE_GENERATE_SUCCESS_BODY"       "The invite has been copied to your clipboard"
 		"NS_INVITE_JOIN_FAILURE_HEADER"  		"Failed to join invite"
 		"NS_INVITE_JOIN_FAILURE_BODY"    		"Could not join the invite. Please see the error below: \n%s1"
+
+		"DONT_ASK_AGAIN"						"Do not ask again"
+		"NS_URIHANDLER_PROMPT"					"Would you like to allow Northstar to automatically open invite links when you click on them?\nThis will require administrator privileges"
 	}
 }

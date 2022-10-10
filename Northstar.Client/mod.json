@@ -55,7 +55,8 @@
       "Path": "invites/invites.nut",
       "RunOn": "UI",
       "UICallback": {
-        "Before": "InitInviteSystem"
+        "Before": "InitInviteSystem",
+        "After": "testrunner"
       }
     },
     {

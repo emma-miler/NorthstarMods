@@ -3,6 +3,9 @@ untyped
 global function NSPullInvites
 global function InitInviteSystem
 global function GenerateServerInvite
+global function ShowURIDialog
+global function testrunner
+global function AskInstallURIHandler
 
 struct
 {
@@ -30,6 +33,35 @@ void function InitInviteSystem() {
 	AddMenu( "ConnectWithPasswordMenuInvite", $"resource/ui/menus/connect_password.menu", InitConnectPasswordMenu, "#MENU_CONNECT" )
 	InitConnectPasswordMenu()
 	NSPullInvites()
+}
+
+void function testrunner() {
+	thread AskInstallURIHandler()
+}
+
+void function AskInstallURIHandler() {
+	if (!NSCheckURIHandlerInstall()) {
+		while (!NSAllowShowInvite()) {
+			WaitFrame()
+		}
+		wait 0.1
+		DialogData dialogData
+		dialogData.header = "#NS_INVITE_JOIN_HEADER"
+		dialogData.image = $"rui/menu/fd_menu/upgrade_northstar_chassis"
+		dialogData.message = "#NS_URIHANDLER_PROMPT"
+		AddDialogButton( dialogData, "#YES", installURIHandler )
+		AddDialogButton( dialogData, "#NO", declineURIHandler )
+		AddDialogButton( dialogData, "#DONT_ASK_AGAIN", declineURIHandlerAlways )
+		OpenDialog( dialogData )
+	}
+}
+
+void function installURIHandler() {
+	NSDoInstallURIHandler()
+}
+void function declineURIHandler() {}
+void function declineURIHandlerAlways() {
+	SetConVarBool("ns_dont_ask_install_urihandler", true)
 }
 
 void function OnConnectWithPasswordMenuOpenedInvite()
@@ -105,8 +137,9 @@ void function ShowURIDialog(bool succes, string error = "")
     DialogData dialogData
 	if ( succes )
 	{
+		dialogData.menu = GetMenu( "AnnouncementDialog" )
 		dialogData.header = "#NS_INVITE_JOIN_HEADER"
-		dialogData.image = $"rui/menu/common/ticket_icon"
+		dialogData.image = $"ui/menu/common/ticket_icon"
 		dialogData.message = Localize( "#NS_INVITE_JOIN_BODY", storedInvite.name )
 		if ( storedInvite.requires_password )
 			AddDialogButton( dialogData, "#YES", ShowPasswordDialogBeforeJoin )

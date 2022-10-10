@@ -268,5 +268,7 @@
 		"NS_INVITE_GENERATE_SUCCESS_BODY"       "Приглашение скопировано в буфер обмена"
 		"NS_INVITE_JOIN_FAILURE_HEADER"  		"Не удалось присоединиться к приглашению"
 		"NS_INVITE_JOIN_FAILURE_BODY"    		"Не удалось присоединиться к приглашению. Cмотря приведенную ниже ошибку: \n%s1"
+
+		"DONT_ASK_AGAIN"						"Не спрашивать снова"
 	}
 }
