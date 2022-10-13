@@ -137,7 +137,6 @@ void function ShowURIDialog(bool succes, string error = "")
     DialogData dialogData
 	if ( succes )
 	{
-		dialogData.menu = GetMenu( "AnnouncementDialog" )
 		dialogData.header = "#NS_INVITE_JOIN_HEADER"
 		dialogData.image = $"ui/menu/common/ticket_icon"
 		dialogData.message = Localize( "#NS_INVITE_JOIN_BODY", storedInvite.name )

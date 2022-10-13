@@ -292,5 +292,6 @@ Premi Sì se sei d'accordo. Questa scelta può essere modificata in qualsiasi mo
 		"NS_INVITE_JOIN_FAILURE_BODY"    "Non è stato possibile accettare l'invito. Per favore controllare l'errore qui sotto:\n%s1"
 
 		"DONT_ASK_AGAIN"						"Non chiedere più"
+		"NS_URIHANDLER_PROMPT"					"Vuoi permettere a Northstar di aprire link di invito quando li clicchi Automaticamente? \nQuesto richiederà i privilegi di Amministratore"
 	}
 }

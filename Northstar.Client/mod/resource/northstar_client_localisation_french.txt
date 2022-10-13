@@ -336,5 +336,8 @@ Choisissez Oui si vous êtes d'accord. Ce choix peut être modifié à tout inst
 		"NS_INVITE_GENERATE_SUCCESS_BODY"       "Invitation copiée dans le presse-papiers"
 		"NS_INVITE_JOIN_FAILURE_HEADER"  "L'invitation a échoué"
 		"NS_INVITE_JOIN_FAILURE_BODY"    "L'invitation n'a pas pu aboutir \n(erreur :%s1)."
+
+		"DONT_ASK_AGAIN"						"Ne plus demander"
+		"NS_URIHANDLER_PROMPT"					"Voulez-vous que Northstar ouvre automatiquement les invitations lorsque vous cliquez sur les liens associés ?\nCela nécessite les droits administrateurs"
 	}
 }

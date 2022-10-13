@@ -342,5 +342,6 @@
 		"NS_INVITE_JOIN_FAILURE_BODY"    		"無法接受邀請,錯誤:\n%s1"
 
 		"DONT_ASK_AGAIN"						"不再提示"
+		"NS_URIHANDLER_PROMPT"					"是否允許Northstar自動打開邀請鏈接？(需要管理員權限)"
 	}
 }
