@@ -14,15 +14,3 @@ void function MessageLoop_Thread()
         NSProcessMessages()
     }
 }
-
-void function testabc(string input) {
-    print(input)
-}
-
-void function testtable(table input) {
-    PrintTable(input)
-}
-
-void function testarray(array<string> input) {
-    foreach (x in input) {print(x)}
-}
